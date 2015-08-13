@@ -1,11 +1,22 @@
-var words = ["fun", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"],
+var words = ["very fun", "super exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"],
     el = document.getElementById('magic'),
     word_counter = 0,
     character_counter = 0;
 
 function updateText()
 {
-    el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+    var alpha = words[word_counter][character_counter];
+    if (alpha === ' ') {
+        var span = document.createElement("span");
+        span.innerHTML = "&nbsp;";
+        el.appendChild(span);
+    } else {
+        el.innerHTML += alpha;
+    }
+    if(character_counter < words[word_counter].length)
+    {
+        character_counter++;
+    }
     
     if(character_counter == words[word_counter].length)
     {
